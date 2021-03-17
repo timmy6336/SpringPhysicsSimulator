@@ -1,0 +1,55 @@
+﻿
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Spring Simulation</title>
+    <script type="text/javascript" src="./assetmanager.js"></script>
+    <script type="text/javascript" src="./timer.js"></script>
+    <script type="text/javascript" src="./gameengine.js"></script>
+    <script type="text/javascript" src="./scene.js"></script>
+    <script type="text/javascript" src="./particle.js"></script>
+    <script type="text/javascript" src="./spring.js"></script>
+    <script type="text/javascript" src="./animator.js"></script>
+    <script type="text/javascript" src="./util.js"></script>
+    <script type="text/javascript" src="./boundingbox.js"></script>
+    <script type="text/javascript" src="./main.js"></script>
+</head>
+<body>
+    <canvas id="gameWorld" width="768" height="768" style="background: #049cd8;" tabindex ="0" autofocus></canvas>
+    <div class="w3-container" style = "position: fixed; left:800px; top:30px; width: 500px; height: 800px; " id = "list" >
+        <label style="color:red;font-size:40px;"> Particle Information: </label>
+            <br><label> (applys to next created particle)</label>
+            <br><label> Mass:</label>
+            <input type="text" id="particleM" value="1">
+            <br><label> Locked:</label>
+            <input type="checkbox" id="locked">
+            <br><label> Outline: Black = Locked, Green = Unlocked</label>
+            <br><label> Fill: White = Selected, Red = Unselected</label>
+            <br>
+            <br>
+            <br><label style="color:red;font-size:40px;"> Spring Information: </label>
+            <br><label> (applys to next created spring)</label>
+            <br><label> Spring Constant (k):</label>
+            <input type="text" id="springK" value=".1">
+            <br><label> Resting Distance (x):</label>
+            <input type="text" id="springX" value="50">
+            <br>
+            <br>
+            <br>
+            <label>(Q + LMB) Create particle.
+            <br>
+            <label>(W + LMB) Lock/Unlock particle.
+            <br>
+            <label>(E + LMB) Select/DeSelect particle.
+            <br>(Selecting two particles creates a spring between them.)
+    </div>
+    <div>
+        <br />
+        <input type="checkbox" id="showP" checked> Show Particles
+        <input type="checkbox" id="showS" checked> Show Springs
+        <input type="checkbox" id="gravity" checked> Apply Gravity
+        
+    </div>
+</body>
+</html>
