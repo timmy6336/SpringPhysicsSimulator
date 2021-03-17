@@ -152,6 +152,7 @@ class Scene
                     if(temp.selected)
                     {
                         temp.selected = false;
+                        this.selected--;
                     }
                     else
                     {
