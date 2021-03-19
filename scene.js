@@ -11,6 +11,7 @@ class Scene
         this.gravity = 1;
         this.selected = 0;
         this.move = -1;
+        this.picked = false;
 
 
         //this.start();
@@ -41,6 +42,7 @@ class Scene
         if(!this.game.holding)
         {
             this.move = -1;
+            this.picked = false;
         }
         let x = -1;
         let y = -1;
@@ -92,7 +94,7 @@ class Scene
             {
                 temp.applyForce(0,this.gravity * temp.mass);
             }
-            if((x > temp.x && x < temp.x + 20) && (y > temp.y && y < temp.y + 20) && this.game.holding)
+            if((x > temp.x && x < temp.x + 20) && (y > temp.y && y < temp.y + 20) && this.game.holding && !this.picked)
             {
                 this.move = i;
             }
@@ -105,6 +107,7 @@ class Scene
             temp.y = y - 10;
             temp.xVel = 0;
             temp.yVel = 0;
+            this.picked = true;
         }
     }
     draw(ctx)
