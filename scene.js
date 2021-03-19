@@ -10,6 +10,7 @@ class Scene
         this.springs = [];
         this.gravity = 1;
         this.selected = 0;
+        this.move = -1;
 
 
         //this.start();
@@ -37,6 +38,17 @@ class Scene
     }
     update()
     {
+        if(!this.game.holding)
+        {
+            this.move = -1;
+        }
+        let x = -1;
+        let y = -1;
+        if(this.game.mouse)
+        {
+            x = this.game.mouse.x + 10;
+            y = this.game.mouse.y + 10;
+        }
         PARAMS.SHOWP = document.getElementById("showP").checked;
         PARAMS.SHOWS = document.getElementById("showS").checked;
         PARAMS.GRAVITY = document.getElementById("gravity").checked;
@@ -80,19 +92,19 @@ class Scene
             {
                 temp.applyForce(0,this.gravity * temp.mass);
             }
-            let x = this.game.mouse.x + 10;
-            let y = this.game.mouse.y + 10;
-            if((x > temp.x && x < temp.x + 20) && (y > temp.y && y < temp.y + 20))
+            if((x > temp.x && x < temp.x + 20) && (y > temp.y && y < temp.y + 20) && this.game.holding)
             {
-                if(this.game.holding)
-                {
-                    temp.x = x-10;
-                    temp.y = y-10;
-                    temp.xVel = 0;
-                    temp.yVel = 0;
-                }
+                this.move = i;
             }
             temp.update();
+        }
+        if(this.move != -1)
+        {
+            let temp = this.particles[this.move];
+            temp.x = x - 10;
+            temp.y = y - 10;
+            temp.xVel = 0;
+            temp.yVel = 0;
         }
     }
     draw(ctx)

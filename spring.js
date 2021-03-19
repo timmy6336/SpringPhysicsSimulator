@@ -15,6 +15,10 @@ class Spring
         let dY = this.b.y - this.a.y;
         this.distance = Math.sqrt((dX * dX) + (dY * dY));
         let force = (this.distance - this.x) * this.k;
+        if(this.distance == 0)
+        {
+            this.distance == .000000000000000000001;
+        }
         let fX = (dX / this.distance) * force;
         let fY = (dY / this.distance) * force;
         this.a.applyForce(fX,fY);
